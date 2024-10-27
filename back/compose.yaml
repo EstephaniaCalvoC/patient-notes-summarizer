@@ -1,0 +1,18 @@
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/code
+    ports:
+      - "8080:8080"
+    networks:
+      - ehr_mysql_local_network
+    container_name: summarizer
+
+networks:
+  ehr_mysql_local_network:
+    external: true
