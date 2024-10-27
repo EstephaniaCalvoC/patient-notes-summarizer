@@ -1,0 +1,20 @@
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - local_network
+    container_name: ehr_mysql
+
+volumes:
+  db_data:
+
+networks:
+  local_network:
